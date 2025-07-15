@@ -12,3 +12,4 @@ Route::apiResource('rooms', RoomsController::class);
 Route::apiResource('bookings', BookingsController::class);
 Route::apiResource('payments', PaymentsController::class);
 Route::apiResource('room-availability', RoomAvailabilityController::class);
+Route::apiResource('users', AuthController::class);
