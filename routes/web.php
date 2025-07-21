@@ -8,14 +8,12 @@ use App\Http\Controllers\Api\PaymentsController;
 use App\Http\Controllers\Api\RoomAvailabilityController;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route untuk dashboard admin (opsional jika tidak dipakai)
 Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
+// Route group untuk admin
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/bookings', [AdminController::class, 'bookings'])->name('admin.bookings');
@@ -29,6 +27,7 @@ Route::prefix('admin')->group(function () {
     Route::delete('/bookings/{id}', [AdminController::class, 'destroyBooking'])->name('admin.bookings.destroy');
 });
 
+// Route group untuk API
 Route::prefix('api')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::apiResource('rooms', RoomsController::class);
